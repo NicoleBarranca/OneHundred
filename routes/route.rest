@@ -1,1 +1,16 @@
 GET http://localhost:3000/sushi
+
+###
+
+GET http://localhost:3000/sushi/62a8fce1ef1d0ba2b59bbe76
+
+###
+
+POST http://localhost:3000/sushi
+Content-Type: application/json
+
+{
+    "name": "Happy Nicole",
+    "ingredients": "tuna",
+    "price": 5
+}
