@@ -10,7 +10,20 @@ POST http://localhost:3000/sushi
 Content-Type: application/json
 
 {
-    "name": "Happy Nicole",
-    "ingredients": "tuna",
-    "price": 5
+    "name": "Sad Michelle",
+    "ingredients": "White Fish",
+    "price": 7
+}
+
+###
+
+DELETE http://localhost:3000/sushi/62a8fce1ef1d0ba2b59bbe76
+
+###
+
+PATCH http://localhost:3000/sushi/62aa1f36f4238d4e92fce61f
+Content-Type: application/json
+
+{
+    "name": "Angry Brooks"
 }

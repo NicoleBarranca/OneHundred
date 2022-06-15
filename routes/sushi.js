@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
 
 // Getting One
 router.get("/:id", getRoll, (req, res) => {
-  res.send(res.roll.name);
+  res.json(res.roll);
 });
 
 // Creating One
@@ -34,11 +34,32 @@ router.post("/", async (req, res) => {
 });
 
 // Updating One (can also user .patch)
-router.put("/", (req, res) => {});
+router.patch("/:id", getRoll, async (req, res) => {
+  if (req.body.name != null) {
+    res.roll.name = req.body.name;
+  }
+  if (req.body.ingredients != null) {
+    res.roll.ingredients = req.body.ingredients;
+  }
+  if (req.body.price != null) {
+    res.roll.price = req.body.price;
+  }
+  try {
+    const updatedRoll = await res.roll.save();
+    res.json(updatedRoll);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
 
 // Deleting one
-router.delete("/:id", (req, res) => {
-  res.roll;
+router.delete("/:id", getRoll, async (req, res) => {
+  try {
+    await res.roll.remove();
+    res.json({ message: "Deleted Roll!" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
 // middleware
